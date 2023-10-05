@@ -1,0 +1,22 @@
+<!doctype html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>WebSocket Example</title>
+</head>
+<body>
+	<pre id="output"></pre>
+	<script>
+		const url = new URL(window.location)
+		url.pathname = '/ws/'
+		url.protocol = url.protocol.replace('http', 'ws')
+		const socket = new WebSocket(url)
+
+		socket.addEventListener('message', function (event) {
+			const codeElement = document.createElement('code')
+			codeElement.textContent = event.data + '\n'
+			document.getElementById('output').appendChild(codeElement)
+		})
+	</script>
+</body>
+</html>
